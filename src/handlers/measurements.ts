@@ -55,11 +55,20 @@ export const addMeasurement = async (measurement: Measurement) => {
   if (!code || code === "") {
     throw new MeasurementError("Measurement code not specified");
   }
+  if (code.length > 20) {
+    throw new MeasurementError("Code is too long");
+  }
   if (!name || name === "") {
     throw new MeasurementError("Measurement name not specified");
   }
+  if (name.length > 50) {
+    throw new MeasurementError("Name is too long");
+  }
   if (!unit || unit === "") {
     throw new MeasurementError("Measurement unit not specified");
+  }
+  if (unit.length > 10) {
+    throw new MeasurementError("Unit is too long");
   }
   if (!lower || !upper) {
     throw new MeasurementError("Measurement reference values are not specified");
@@ -69,6 +78,12 @@ export const addMeasurement = async (measurement: Measurement) => {
   }
   if (isNaN(upper)) {
     throw new MeasurementError("Measurement's upper reference value is invalid");
+  }
+  if (upper.toString().length > 20) {
+    throw new MeasurementError("Upper reference value is too long");
+  }
+  if (lower.toString().length > 20) {
+    throw new MeasurementError("Lower reference value is too long");
   }
 
   if ((await Measurements.where("code", code).count()) !== 0) {
