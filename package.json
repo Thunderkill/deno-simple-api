@@ -1,0 +1,16 @@
+{
+  "name": "deno-simple-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "start": "deno run --allow-net --allow-read --allow-write src/main.ts",
+    "test": "deno test --allow-read --allow-write --allow-net",
+    "build": "docker build -t deno-simple-api ."
+  },
+  "author": "Janne Wiik",
+  "license": "ISC"
+}

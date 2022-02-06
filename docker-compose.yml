@@ -1,0 +1,12 @@
+version: '3.9'
+
+services:
+  simple-api:
+    image: deno-simple-api
+    ports:
+      - "7700:7700"
+    volumes:
+      - sqlite:/app/database
+
+volumes:
+  sqlite:
