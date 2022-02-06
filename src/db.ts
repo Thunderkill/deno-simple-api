@@ -1,4 +1,6 @@
-import { Database, DataTypes, Model, SQLite3Connector } from "./deps.ts";
+import { Database, DataTypes, ensureDirSync, Model, SQLite3Connector } from "./deps.ts";
+
+ensureDirSync("./database");
 
 const connection = new SQLite3Connector({
   filepath: "./database/measurements.db",
